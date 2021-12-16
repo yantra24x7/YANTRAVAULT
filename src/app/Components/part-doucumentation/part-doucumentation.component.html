@@ -1,0 +1,106 @@
+<section class="page">
+  <div *ngIf="myLoader" class="spinner">
+    <img src="assets/images/spinner.gif">
+  </div>
+  <div class="section_top_padding">
+    <div class="container-fluid">
+      <div class="page_title_sec">
+        <h2 class="sub_title">
+          <mat-icon class="v-align-middle display">description</mat-icon>
+          <span class="v-align-middle">Part Documentation</span>
+        </h2>
+        <div class="filter_sec">
+          <div class="filter_field">
+            <mat-form-field appearance="outline">
+              <mat-select placeholder="Select Machine" required [(ngModel)]="machine_id">
+                <mat-option *ngFor="let file of reason_response" [value]="file.id" (click)="code_compare(file.id)">
+                  {{file.machine_name}}</mat-option>
+              </mat-select>
+            </mat-form-field>
+          </div>
+          <div class="table_search"> 
+            <input class="form-control" type="text" (keyup)="search($event.target.value)" name="search" [(ngModel)]="searchText" placeholder="Search anything here!">
+
+
+          </div>
+
+          
+        </div>
+      
+      </div>
+      <mat-card class="card_sec">
+        <mat-card-content class="table-responsive">
+          <table>
+            <thead>
+              <tr>
+                <th>#</th>
+                <th>Date</th>
+
+                <th>File Name</th>
+
+                <th>Machine Name</th>
+
+                <th>User Nmae</th>
+
+                <th>Customer Name</th>
+
+                <th>Job Name</th>
+
+                <!-- <th>Old Revision Number</th> -->
+
+                <th>New Revision Number</th>
+
+                <th>Upload</th>
+
+                <th>Actions</th>
+
+
+
+              </tr>
+            </thead>
+            <tr *ngFor="let part of reason ; let i = index">
+              <td>{{i+1}}</td>
+              <td>{{part.create_date | date : "dd.MM.yyyy"}}</td>
+              <td>{{part.file_name}}
+
+                <div>
+                  <button mat-raised-button class="filter_btn btn_orange" (click)="openDialog6(part.id,part.file_name)">
+                    Version History</button>
+                </div>
+              </td>
+              <td>{{part.machine_name}}</td>
+              <td>{{part.user_name}}
+
+              </td>
+              <td>{{part.customername}}</td>
+              <td>{{part.job_name}}</td>
+              <!-- <td>---</td> -->
+              <td>{{part.new_revision_no}}</td>
+
+              <td>
+
+                <div>
+                  <button mat-raised-button (click)="openDialog(part.id)" class="filter_btn btn_orange">
+                    File Upload</button>
+                </div>
+              </td>
+              <td class="action">
+                <div><a (click)="openDialog2(part.id,part.customername,part.job_name)" class="Download"><i
+                      class="fa fa-pencil" aria-hidden="true"></i></a></div>
+
+                      <div ><a *ngIf="part?.part_doc_path?.url!=null" class="Download" matTooltip="Download" (click)="new_download(part.id,part.customername,part.job_name)"><i
+                        class="fa fa-download" aria-hidden="true"></i></a></div>
+
+              </td>
+             
+
+            </tr>
+          </table>
+          <div *ngIf="reason.length==0" class="no_data_found">
+            <h2>No data found</h2>
+          </div>
+        </mat-card-content>
+      </mat-card>
+    </div>
+  </div>
+</section>

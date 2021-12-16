@@ -1,0 +1,30 @@
+<mat-toolbar>Are You Sure You want to delete this file?</mat-toolbar>
+
+<form [formGroup]="login" (ngSubmit)="logintest()">
+    <mat-form-field>
+        <mat-label>UserName</mat-label>
+        <input matInput formControlName="user_name" type="text">
+    </mat-form-field>
+
+    <mat-form-field>
+        <mat-label>Reason</mat-label>
+        <input matInput formControlName="reason" type="text">
+    </mat-form-field>
+
+    <div class="control-section">
+        
+        <div class="filter_field date_picker">
+            <mat-form-field>
+              <mat-label>Choose a date</mat-label>
+              <input matInput [matDatepicker]="picker" formControlName="date" [max]='maxDate' [min]='minDate'
+                (click)="picker.open()" placeholder="Choose Date">
+              <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+              <mat-datepicker #picker startView="year" [startAt]="startDate"></mat-datepicker>
+            </mat-form-field>
+          </div>
+    </div>
+
+    <button mat-raise-button [disabled]="login.invalid">Save</button>
+    <button mat-raise-button (click)="onNoClick()">Close</button>
+
+</form>

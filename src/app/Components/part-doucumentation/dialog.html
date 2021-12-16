@@ -1,0 +1,21 @@
+<div class="modal_sec">
+    <mat-toolbar>
+        <h3>File Upload</h3>
+        <button type="button" class="close" aria-label="Close" (click)="onNoClick()">
+            <span aria-hidden="true">×</span>
+        </button>
+    </mat-toolbar>
+    <div class="dialog-form">
+        <div class="filter_sec">
+                <div class="form-group custom_file_upload">
+                    <label for="file">Choose File</label><br /> <input type="file" id="file"
+                    [(ngModel)]="name" (change)="fileUpload1($event)" accept=".pdf">
+                </div>
+
+                <div class="form-button text-right">
+                    <button mat-raised-button class="filter_btn btn_orange" [disabled]="!name" (click)="save()"> Save</button>
+                    <button mat-raised-button (click)="onNoClick()" class="filter_btn btn_default ml-16">Close</button>
+                </div>
+        </div>
+    </div>
+</div>

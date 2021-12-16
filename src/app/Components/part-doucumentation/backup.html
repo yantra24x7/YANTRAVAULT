@@ -1,0 +1,74 @@
+
+<div class="modal_sec two_form">
+    <mat-toolbar>
+        <h3>Version History</h3>
+        <button type="button" class="close" aria-label="Close" (click)="onNoClick()">
+            <span aria-hidden="true">×</span>
+        </button>
+    </mat-toolbar>
+
+    <div class="row_sec model_align_sec" >
+        <!-- <h3>Reason</h3> -->
+                            <!-- <div class="content">
+                                <div class="full_date">
+                                    <p>
+                                        Controller  :
+                                        <span>1</span>
+                                    </p>
+                                
+                                    <p>
+                                        Model  :
+                                        <span>LMW</span>
+                                    </p>
+                                    <p>
+                                        IP :
+                                        <span> 192.168.0.237</span>
+                                    </p>
+                                </div>
+                            </div> -->
+                            <mat-card-content class="table-responsive">
+
+                            <table>
+                                <tr>
+                                    <th>#</th>
+                                    <th>Date</th>
+                                    <th>Machine Name</th>
+                                    <th>User Name</th>
+                                    <th>File Name</th>
+                                    <th>Customer Name</th>
+                                    <th>Job Name</th>
+                                    <th>Description</th>
+                                    <th>Old Revision Number</th>
+                                    <th>New Revision Number</th>
+</tr>
+<tr *ngFor = "let reason of version ; let i= index">
+    <td>{{i+1}}</td>
+    <td>{{reason.create_date | date}}</td>
+    <td>{{reason.machine_name}}</td>
+
+    <td>{{reason.user_name}}</td>
+
+    <td>{{reason.file_name}}</td>
+
+    <td>{{reason.customername}}</td>
+
+    <td>{{reason.job_name}}</td>
+
+    <td>{{reason.description}}</td>
+
+    <td>{{reason.old_revision_no}}</td>
+
+    <td>{{reason.new_revision_no}}</td>
+
+</tr>
+                            </table>
+                            </mat-card-content>
+
+                            
+    </div>
+</div>
+
+
+
+
+
